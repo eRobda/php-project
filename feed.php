@@ -1,11 +1,5 @@
 <?php
 session_start();
-$username = '';
-if (isset($_SESSION['username'])) {
-    $username = $_SESSION['username'];
-} else {
-    header('Location: index.php');
-}
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +17,9 @@ if (isset($_SESSION['username'])) {
 
 <div class="h-24 w-24 rounded-full flex items-center justify-center" style="background: linear-gradient(40deg, rgba(255,188,0,1) 0%, rgba(255,0,146,1) 100%);">
     <div class="h-[5.6rem] w-[5.6rem] rounded-full bg-white">
-
     </div>
 </div>
+<div>
 
 </body>
 

@@ -1,24 +1,25 @@
 <?php
+session_start();
+include "./backend/database.php";
+
 $login_message = '';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-        if ($username == 'admin' || $password == 'admin') {
-            // uzivatel prihlasen
-            session_start();
-            $_SESSION['username'] = $username;
-            header('Location: feed.php');
-        } else {
-            $login_message = 'Špatně zadané uživatelské jméno nebo heslo.';
-        }
+    $user_object = login($username, $password);
+
+    if ($user_object !== null) {
+        $_SESSION['user'] = $user_object;
+        header("Location: feed.php");
+        exit; // Always exit after header redirection
     } else {
-        $login_message = 'Nezdali jste uživatelské jméno nebo heslo';
+        $login_message = "Nesprávné přihlašovací údaje.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
