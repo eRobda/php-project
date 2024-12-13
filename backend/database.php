@@ -66,5 +66,17 @@ function login($username, $password) {
         return null; // No match found
     }
 }
+function register($username, $password, $display_name, $bio, $pfp) {
+    $db = Database::getInstance();
+
+    $username = $db->escape($username);
+    $password = $db->escape($password);
+    $display_name = $db->escape($display_name);
+    $bio = $db->escape($bio);
+    $pfp = $db->escape($pfp);
+
+    $sql = "INSERT INTO users (username, password, display_name, bio, pfp) VALUES ('$username', '$password', '$display_name', '$bio', '$pfp')";
+    $db->query($sql);
+}
 
 ?>

@@ -20,8 +20,10 @@ $user_object = $_SESSION['user'];
 </head>
 
 <body class="flex w-dvw">
-    <div class="w-1/6 h-screen outline outline-1 outline-gray-400">
-        
+    <div class="w-1/6 h-screen outline outline-1 outline-gray-400 flex flex-col items-center py-20">
+        <span class="text-xl">Phpgram</span>
+        <a class="mt-10" href="feed.php">Home</a>
+        <a class="mt-10" href="my-profile.php">Profil</a>
     </div>
     <div class="w-5/6 flex flex-col items-center">
             <div class="flex items-center w-2/5 mt-20 gap-20">
